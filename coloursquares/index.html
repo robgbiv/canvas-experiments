@@ -21,9 +21,9 @@
           var height = window.innerHeight;
           for (var i = 0; i < width; i++) {
               for (var j = 0; j < height; j++) {
-                  ctx.fillStyle = 'rgb(' + Math.floor(255 - 42.5 * i) + ',' +
-                      Math.floor(255 - 42.5 * j) + ',255)';
-                  ctx.fillRect(j * 25, i * 25, 25, 25);
+                  ctx.fillStyle = 'rgb(' + Math.floor(Math.random() * 256) + ',' +
+                      Math.floor(Math.random() * 256) + ',255)';
+                  ctx.fillRect(j * 150, i * 150, 150, 150);
               }
           }
       }
