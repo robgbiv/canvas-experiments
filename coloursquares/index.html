@@ -18,7 +18,8 @@
             ['#FE4365', '#FC9D9A', '#F9CDAD', '#C8C8A9', '#83AF9B'],
             ['#ECD078', '#D95B43', '#C02942', '#542437', '#53777A'],
             ['#CFF09E', '#A8DBA8', '#79BD9A', '#3B8686', '#0B486B'],
-            ['#556270', '#4ECDC4', '#C7F464', '#FF6B6B', '#C44D58']
+            ['#556270', '#4ECDC4', '#C7F464', '#FF6B6B', '#C44D58'],
+            ['#4000FF', '#2F00BD', '#250192', '#5218FF', '#7041FC']
         ];
 
         function draw() {
@@ -28,11 +29,12 @@
             var width = window.innerWidth;
             var height = window.innerHeight;
             var pallette = pallettes[Math.floor(Math.random() * pallettes.length)];
+            var squareSize = Math.floor(Math.random() * (480 - 10 + 1)) + 10;
             for (var i = 0; i < width; i++) {
                 for (var j = 0; j < height; j++) {
                     var colour = pallette[Math.floor(Math.random() * pallette.length)];
                     ctx.fillStyle = colour;
-                    ctx.fillRect(j * 150, i * 150, 150, 150);
+                    ctx.fillRect(j * squareSize, i * squareSize, squareSize, squareSize);
                 }
             }
         }
