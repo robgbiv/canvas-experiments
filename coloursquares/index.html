@@ -10,6 +10,8 @@
         width: 100%;
         height: 100%;
         margin: 0px;
+        overflow: hidden;
+        display: block;
     }
     </style>
     <script type="application/javascript">
@@ -22,14 +24,15 @@
             ['#4000FF', '#2F00BD', '#250192', '#5218FF', '#7041FC']
         ];
 
+        var pallette = pallettes[Math.floor(Math.random() * pallettes.length)];
+        var squareSize = Math.floor(Math.random() * (480 - 10 + 1)) + 10;
+
         function draw() {
             var ctx = document.getElementById('canvas').getContext('2d');
             ctx.canvas.width = window.innerWidth;
             ctx.canvas.height = window.innerHeight;
             var width = window.innerWidth;
             var height = window.innerHeight;
-            var pallette = pallettes[Math.floor(Math.random() * pallettes.length)];
-            var squareSize = Math.floor(Math.random() * (480 - 10 + 1)) + 10;
             for (var i = 0; i < width; i++) {
                 for (var j = 0; j < height; j++) {
                     var colour = pallette[Math.floor(Math.random() * pallette.length)];
@@ -37,11 +40,11 @@
                     ctx.fillRect(j * squareSize, i * squareSize, squareSize, squareSize);
                 }
             }
-        }
+        };
     </script>
 </head>
 
-<body onload="draw();">
+<body onload="draw();" onresize="draw();">
     <canvas id="canvas"></canvas>
 </body>
 
