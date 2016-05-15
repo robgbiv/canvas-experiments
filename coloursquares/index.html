@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Canvas tutorial</title>
+    <title>Coloursquares</title>
     <style type="text/css">
     html,
     body {
@@ -36,11 +36,25 @@
                 }
             }
         }
+        function getXML() {
+            var x = new XMLHttpRequest();
+            x.open("GET", "http://www.colourlovers.com/api/palettes/top", true);
+            x.onreadystatechange = function () {
+              if (x.readyState == 4 && x.status == 200)
+              {
+                var doc = x.responseXML;
+                console.log(doc);
+              }
+            };
+            x.send(null);
+        }
     </script>
 </head>
 
-<body onload="draw();">
-    <canvas id="canvas"></canvas>
+<body onload="draw(); getXML();">
+    <canvas id="canvas">
+        <!-- <h1>Look at me duderino</h1> -->
+    </canvas>
 </body>
 
 </html>
