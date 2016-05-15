@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Canvas tutorial</title>
+    <style type="text/css">
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+    }
+    </style>
+    <script type="application/javascript">
+        var pallettes = [
+            ['#69D2E7', '#A7DBD8', '#E0E4CC', '#F38630', '#FA6900'],
+            ['#FE4365', '#FC9D9A', '#F9CDAD', '#C8C8A9', '#83AF9B'],
+            ['#ECD078', '#D95B43', '#C02942', '#542437', '#53777A'],
+            ['#CFF09E', '#A8DBA8', '#79BD9A', '#3B8686', '#0B486B'],
+            ['#556270', '#4ECDC4', '#C7F464', '#FF6B6B', '#C44D58']
+        ];
+
+        function draw() {
+            var ctx = document.getElementById('canvas').getContext('2d');
+            ctx.canvas.width = window.innerWidth;
+            ctx.canvas.height = window.innerHeight;
+            var width = window.innerWidth;
+            var height = window.innerHeight;
+            var pallette = pallettes[Math.floor(Math.random() * pallettes.length)];
+            for (var i = 0; i < width; i++) {
+                for (var j = 0; j < height; j++) {
+                    var colour = pallette[Math.floor(Math.random() * pallette.length)];
+                    ctx.fillStyle = colour;
+                    ctx.fillRect(j * 150, i * 150, 150, 150);
+                }
+            }
+        }
+    </script>
+</head>
+
+<body onload="draw();">
+    <canvas id="canvas"></canvas>
+</body>
+
+</html>
