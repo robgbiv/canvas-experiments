@@ -15,7 +15,7 @@
     }
     </style>
     <script type="application/javascript">
-        var pallettes = [
+        var palettes = [
             ['#69D2E7', '#A7DBD8', '#E0E4CC', '#F38630', '#FA6900'],
             ['#FE4365', '#FC9D9A', '#F9CDAD', '#C8C8A9', '#83AF9B'],
             ['#ECD078', '#D95B43', '#C02942', '#542437', '#53777A'],
@@ -24,18 +24,18 @@
             ['#4000FF', '#2F00BD', '#250192', '#5218FF', '#7041FC']
         ];
 
-        var pallette = pallettes[Math.floor(Math.random() * pallettes.length)];
+        var palette = palettes[Math.floor(Math.random() * palettes.length)];
         var squareSize = Math.floor(Math.random() * (480 - 10 + 1)) + 10;
 
         function draw() {
-            var ctx = document.getElementById('canvas').getContext('2d');
-            ctx.canvas.width = window.innerWidth;
-            ctx.canvas.height = window.innerHeight;
             var width = window.innerWidth;
             var height = window.innerHeight;
+            var ctx = document.getElementById('canvas').getContext('2d');
+            ctx.canvas.width = width;
+            ctx.canvas.height = height;
             for (var i = 0; i < width; i++) {
                 for (var j = 0; j < height; j++) {
-                    var colour = pallette[Math.floor(Math.random() * pallette.length)];
+                    var colour = palette[Math.floor(Math.random() * palette.length)];
                     ctx.fillStyle = colour;
                     ctx.fillRect(j * squareSize, i * squareSize, squareSize, squareSize);
                 }
