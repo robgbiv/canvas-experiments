@@ -37,9 +37,9 @@
 
         var width = window.innerWidth;
         var height = window.innerHeight;
-        var middleWidth = width / 2;
-        var middleHeight = height / 2;
-        var remainingWidth = middleWidth;
+        var halfWidth = width / 2;
+        var halfHeight = height / 2;
+        var remainingWidth = halfWidth;
         var remainingHeight = height;
         var xPos = 0;
         var yPos = 0;
@@ -54,22 +54,23 @@
             ctx.canvas.height = height;
 
             ctx.fillStyle = randomColour();
-            ctx.fillRect(0, 0, middleWidth, height);
+            // ctx.fillRect(0, 0, middleWidth, height);
 
-            for (var i = 0; i < 10; i++) {
-                ctx.fillStyle = randomColour();
-                ctx.fillRect(middleWidth, yPos, remainingWidth, remainingHeight);
-                xPos += remainingWidth;
-                yPos += remainingHeight / 2;
-                remainingWidth *= 2;
-                remainingHeight *= 2;
-                for (var j = 0; j < 10; j++) {
+            for (var i = 0; i < 20; i++) {
+                if (i % 2 == 0) {
                     ctx.fillStyle = randomColour();
-                    ctx.fillRect(xPos, middleHeight, remainingWidth, remainingHeight);
+                    ctx.fillRect(xPos, yPos, remainingWidth, remainingHeight);
+                    remainingHeight /= 2;
                     xPos += remainingWidth;
-                    yPos += remainingHeight / 2;
-                    remainingWidth *= 2;
-                    remainingHeight *= 2;
+                    // yPos += remainingHeight;
+                    remainingWidth /= 2;
+                } else {
+                    ctx.fillStyle = randomColour();
+                    ctx.fillRect(xPos, yPos, remainingWidth, remainingHeight);
+                    remainingHeight /= 2;
+                    // xPos += remainingWidth;
+                    yPos += remainingHeight;
+                    remainingWidth /= 2;
                 }
             }
         };
