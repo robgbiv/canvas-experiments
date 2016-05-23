@@ -40,7 +40,7 @@
         var middleWidth = width / 2;
         var middleHeight = height / 2;
         var remainingWidth = middleWidth;
-        var remainingHeight = middleHeight;
+        var remainingHeight = height;
         var xPos = 0;
         var yPos = 0;
 
@@ -53,19 +53,23 @@
             ctx.canvas.width = width;
             ctx.canvas.height = height;
 
-            for (var i = 0; i < 20; i++) {
-                for (var j = 0; j < 20; j++) {
-                    if (i % 2 == 0) {
-                        var colour = randomColour();
-                        ctx.fillStyle = colour;
-                        ctx.fillRect(xPos, yPos, remainingWidth, remainingHeight);
-                        xPos += remainingWidth;
-                        yPos += remainingHeight;
-                        remainingWidth /= 2;
-                        remainingHeight /= 2;
-                    } else {
-                        continue;
-                    }
+            ctx.fillStyle = randomColour();
+            ctx.fillRect(0, 0, middleWidth, height);
+
+            for (var i = 0; i < 10; i++) {
+                ctx.fillStyle = randomColour();
+                ctx.fillRect(middleWidth, yPos, remainingWidth, remainingHeight);
+                xPos += remainingWidth;
+                yPos += remainingHeight / 2;
+                remainingWidth *= 2;
+                remainingHeight *= 2;
+                for (var j = 0; j < 10; j++) {
+                    ctx.fillStyle = randomColour();
+                    ctx.fillRect(xPos, middleHeight, remainingWidth, remainingHeight);
+                    xPos += remainingWidth;
+                    yPos += remainingHeight / 2;
+                    remainingWidth *= 2;
+                    remainingHeight *= 2;
                 }
             }
         };
